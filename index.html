@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Laboratorio WebAR de Microelectrónica</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body>
+    <header class="hud" aria-live="polite">
+      <p class="eyebrow">LABORATORIO WEBAR</p>
+      <h1>Apunta al marcador Hiro</h1>
+      <p id="tracking-status">Buscando marcador…</p>
+    </header>
+
+    <section class="help">
+      <span class="help__dot" aria-hidden="true"></span>
+      Mantén el marcador completo dentro de la cámara
+    </section>
+
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="antialias: true; alpha: true; colorManagement: true"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
+    >
+      <a-marker
+        id="hiro-marker"
+        preset="hiro"
+        emitevents="true"
+        smooth="true"
+        smooth-count="10"
+        smooth-tolerance="0.01"
+        smooth-threshold="5"
+      >
+        <a-plane
+          position="0 0.02 0"
+          rotation="-90 0 0"
+          width="1.9"
+          height="1.15"
+          color="#07111f"
+          opacity="0.92"
+        ></a-plane>
+
+        <a-text
+          value="PASO 1"
+          position="0 0.04 -0.34"
+          rotation="-90 0 0"
+          align="center"
+          color="#5eead4"
+          width="2.3"
+        ></a-text>
+
+        <a-text
+          value="Coloca una resistencia de 220 ohmios"
+          position="0 0.045 -0.05"
+          rotation="-90 0 0"
+          align="center"
+          color="#ffffff"
+          width="2.1"
+          wrap-count="24"
+        ></a-text>
+
+        <a-triangle
+          position="0 0.05 0.34"
+          rotation="-90 0 0"
+          vertex-a="0 0.22 0"
+          vertex-b="-0.15 -0.12 0"
+          vertex-c="0.15 -0.12 0"
+          color="#f59e0b"
+        ></a-triangle>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script src="app.js"></script>
+  </body>
+</html>
